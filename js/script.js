@@ -1,6 +1,6 @@
 const animItems = document.querySelectorAll('.anim-items');
 
-if (animItems.length > 0) {
+if (animItems.length > 0 && document.body.clientWidth > 992) {
 	window.addEventListener('scroll', animOnScroll);
 
 	function animOnScroll() {
