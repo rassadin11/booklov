@@ -1,6 +1,6 @@
 const animItems = document.querySelectorAll('.anim-items');
 
-if ( document.body.clientWidth < 993 ) {
+if ( document.body.clientWidth <= 992 ) {
 	for (let elem of animItems) {
 		elem.classList.remove('anim-items');
 	}
