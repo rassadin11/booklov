@@ -6,45 +6,47 @@ if ( && document.body.clientWidth <= 992 ) {
 	}
 }
 
-if (animItems.length > 0) {
-	window.addEventListener('scroll', animOnScroll);
+if (document.body.clientWidth > 992) {
+	if (animItems.length > 0) {
+		window.addEventListener('scroll', animOnScroll);
 
-	function animOnScroll() {
-		for (let index = 0; index < animItems.length; index++) {
-			const animItem = animItems[index];
-			const animItemHeight = animItem.offsetHeight;
-			const animItemOffset = offset(animItem).top;
-			const animStart = 4;
+		function animOnScroll() {
+			for (let index = 0; index < animItems.length; index++) {
+				const animItem = animItems[index];
+				const animItemHeight = animItem.offsetHeight;
+				const animItemOffset = offset(animItem).top;
+				const animStart = 4;
 
-			let animItemPoint = window.innerHeight - animItemHeight / animStart;
-			if (animItemHeight > window.innerHeight) {
-				animItemPoint = window.innerHeight - window.innerHeight / animStart;
-			}
+				let animItemPoint = window.innerHeight - animItemHeight / animStart;
+				if (animItemHeight > window.innerHeight) {
+					animItemPoint = window.innerHeight - window.innerHeight / animStart;
+				}
 
-			if (!animItem.classList.contains('prove')) {
-				if ((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)) {
-					animItem.classList.add('active');
-					animItem.classList.add('prove');
-				} else {
-					animItem.classList.remove("active");
+				if (!animItem.classList.contains('prove')) {
+					if ((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)) {
+						animItem.classList.add('active');
+						animItem.classList.add('prove');
+					} else {
+						animItem.classList.remove("active");
+					}
 				}
 			}
 		}
-	}
 
-	function offset(el) {
-		const rect = el.getBoundingClientRect(),
-			  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, 
-			  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		function offset(el) {
+			const rect = el.getBoundingClientRect(),
+				  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, 
+				  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-		return {
-			top: rect.top + scrollTop,
-			left: rect.left + scrollLeft,
+			return {
+				top: rect.top + scrollTop,
+				left: rect.left + scrollLeft,
+			}
 		}
-	}
 
-	animOnScroll();
-};
+		animOnScroll();
+	};	
+}
 
 if (document.body.clientWidth <= 768) {
 	let elems = document.querySelectorAll('.advantage');
