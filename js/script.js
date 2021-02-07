@@ -1,6 +1,12 @@
 const animItems = document.querySelectorAll('.anim-items');
 
-if (animItems.length > 0 && document.body.clientWidth > 992) {
+if ( && document.body.clientWidth <= 992 ) {
+	for (let elem of animItems) {
+		elem.classList.remove(.anim-items);
+	}
+}
+
+if (animItems.length > 0) {
 	window.addEventListener('scroll', animOnScroll);
 
 	function animOnScroll() {
